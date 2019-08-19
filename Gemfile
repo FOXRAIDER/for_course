@@ -35,6 +35,9 @@ end
 group :test do
   gem 'shoulda-matchers', require: false
 end
+
+gem 'slim-rails'
+gem 'rails-controller-testing'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
