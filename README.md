@@ -1,7 +1,7 @@
 # README
 https://go.teachbase.ru/viewer/sessions/9471/materials/41847
 
-Learning lessons Ruby on Reals 
+Learning lessons Ruby on Reals \n
 Part 1 add test for controller index
 Part 2 add test for controller show
 Part 3 add test for controller new
