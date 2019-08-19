@@ -73,10 +73,44 @@ RSpec.describe QuestionsController, type: :controller do
                 expect {post :create, params:{question: attributes_for(:invalid_question)}}.to_not change(Question, :count)
             end
             it 'rerenders new view' do
-                
+                post :create, params:{question: attributes_for(:invalid_question)}
+                expect(response).to render_template :new 
             end
         end
     end
 
+    describe 'PATCH #update' do
+        context 'valid attributes' do
+            it 'assings the requested question  to @question' do 
+                patch :update, params: { id: question, question: attributes_for(:question)}
+                expect(assigns(:question)).to eq question
+            end
+            it 'changes question attributes' do
+                patch :update, params: {id: question, question:{title: "new title", body:"new body"}}
+                question.reload
+                expect(question.title).to eq 'new title'
+                expect(question.body).to eq 'new body'
+            end
+
+            it 'redirects to the updated questions' do
+                patch :update, params: { id: question, question: attributes_for(:question)}
+                expect(response).to redirect_to question
+            end
+        end 
+
+        context 'invalid attributes' do 
+            before {patch :update, params: {id: question, question:{title: "new title", body:""}}}
+            
+            it 'doesnt changes question attributes' do
+                question.reload
+                expect(question.title).to eq 'MyString'
+                expect(question.body).to eq 'MyText'
+            end
+
+            it 'rerender edit view' do
+                expect(response).to render_template :edit
+            end
+        end
+    end
 
 end
