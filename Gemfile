@@ -34,10 +34,12 @@ end
 
 group :test do
   gem 'shoulda-matchers', require: false
+  gem 'launchy'
 end
 
 gem 'slim-rails'
 gem 'rails-controller-testing'
+gem 'devise', '~> 4.2'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
