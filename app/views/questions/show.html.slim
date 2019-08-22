@@ -1,1 +1,16 @@
 =p "Your question successfully created."
+        
+        
+p= @question.id
+p= @question.title
+p= @question.body
+p= @question.created_at 
+
+#=render partial: "answer/form", locals: {question_id: @question.id}, object: @questions, collection: @questions
+
+
+
+p= link_to 'Reply', new_question_answer_path(@question.id)
+
+-@question.answers.each do |answer|
+    p= answer.body

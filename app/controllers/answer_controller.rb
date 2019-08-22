@@ -16,7 +16,12 @@ class AnswerController < ApplicationController
         else
           render :new
         end
-      end
+    end
+
+    def destroy
+      @answer.destroy
+      redirect_to @question
+    end
 
 
     private
