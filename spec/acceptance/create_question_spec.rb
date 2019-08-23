@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Create question', %q{sadasd} do
+feature 'Create and delete question', %q{sadasd} do
     given(:user) { create(:user)}
 
     scenario 'Auth user create question' do
@@ -9,16 +9,22 @@ feature 'Create question', %q{sadasd} do
 
         visit questions_path
         click_on 'Ask question'
-        fill_in 'Title', with: 'Test question'
-        fill_in 'Body', with: 'text text'
+        fill_in 'Title', with: 'potato'
+        fill_in 'Body', with: 'green'
         click_on 'Create'
-        expect(page).to have_content("Your question successfully created.")
+        expect(page).to have_text('potato', 'green')
+        click_on 'home'
+        expect(page).to have_text('potato', 'green')
+        click_on 'delete'
+        expect(page).to have_no_text('potato', 'green')
+        expect(page).to have_no_button('show')
+
     end
     scenario 'Dont auth user' do
-        visit questions_path
-        click_on 'Ask question'
+        visit root_path
 
-        expect(page).to have_content("You need to sign in or sign up before continuing.")
+        expect(page).to have_no_button('Ask question')        
+
     end
 
 end

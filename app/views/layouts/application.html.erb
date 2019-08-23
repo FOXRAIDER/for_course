@@ -11,10 +11,12 @@
 
   <body>
     <% if user_signed_in? %>
-    <li>
+    <ul>
+    <%= button_to 'home', root_path, {method: :get} %>
     <%= link_to('Logout', destroy_user_session_path, method: :delete) %> 
-    <%= link_to 'Ask question', new_question_path %>       
-    </li>
+    <%= link_to 'Ask question', new_question_path %>  
+    <p> UserID =  <%= current_user.id %></p>     
+    </ul>
     <% else %>
     <li>
     <%= link_to('Login', new_user_session_path) %>  
@@ -25,6 +27,8 @@
 
     <%= yield %>
 
-    <%= button_to 'home', root_path, {method: :get} %>
+    
+    <p> jopa</p>
+
   </body>
 </html>

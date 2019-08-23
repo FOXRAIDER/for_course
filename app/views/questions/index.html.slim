@@ -1,12 +1,9 @@
-
-hr
-
-
 -if user_signed_in?
         -@questions.each do |question|
+                p= link_to 'show', question_path(question.id)
                 p= question.title
                 p= question.body
-                p= link_to 'show', question_path(question.id)
+                p= question.user_id
                 hr
 
 -else 

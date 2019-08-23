@@ -11,6 +11,7 @@ class QuestionsController < ApplicationController
     end
     def new
         @question = Question.new
+        @question.user_id = current_user.id 
     end 
     def edit
              
@@ -34,8 +35,12 @@ class QuestionsController < ApplicationController
     end
 
     def destroy
-        @question.destroy
-        redirect_to question_path
+        if @question.user_id == current_user.id
+            Question.find(params[:id]).destroy
+            redirect_to root_path
+        else
+            render inline: p='Вы не можете удалить данный вопрос'
+            end
     end
 
     private
@@ -45,7 +50,7 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-        params.require(:question).permit(:title, :body)
+        params.require(:question).permit(:title, :body, :user_id)
     end
 
 end
