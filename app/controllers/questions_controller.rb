@@ -43,6 +43,13 @@ class QuestionsController < ApplicationController
             end
     end
 
+    def destroy_all
+        
+        Answer.where(question_id = @question).destroy_all
+        question = Question.find(params[:id])
+        redirect_to question_path(question)
+    end
+
     private
 
     def load_question

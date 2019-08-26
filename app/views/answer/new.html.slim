@@ -1,5 +1,10 @@
-= form_for @answer, url: question_answer_index_path do |f|
-    = f.label :body
+.answers
+    =render partial:  'answers'
+
+
+
+= form_for @answer, url: question_answer_index_path, remote: true  do |f|
+    = f.label :Y 
     = f.text_field :body 
     = f.hidden_field :user_id, :value => @answer.user_id
     = f.submit 

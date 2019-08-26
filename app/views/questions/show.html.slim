@@ -8,7 +8,7 @@ p= @question.created_at
 p= @question.user_id
 p= button_to 'delete', question_path(@question.id), method: :delete
 
-
+p= button_to 'remove all answer',  destroy_all_question_path(@question.id), method: :delete, action: "destroy_all", data: {confirm: "ЭТА КНОПКА УНИЧТОЖИТ АБСОЛЮТНО ВСЕ ОТВЕТЫ НА ДАННЫЙ ВОПРОС! ВЫ ХОТИТЕ ПРОДОЛЖИТЬ?"}
 
 
 p= link_to 'Reply', new_question_answer_path(@question.id)
