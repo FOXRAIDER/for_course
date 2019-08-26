@@ -20,10 +20,11 @@ class AnswerController < ApplicationController
     end
 
     def destroy
+      @question = Question.find(params[:question_id])
       answer = Answer.find(params[:id])
       if answer.user_id == current_user.id
         Answer.find(params[:id]).destroy
-        redirect_to question_path(question.id)
+        redirect_to question_path(@question)
       else
         render inline: p= '???'
       end
