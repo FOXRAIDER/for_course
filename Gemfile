@@ -46,7 +46,7 @@ end
 
 gem 'slim-rails'
 gem 'rails-controller-testing'
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.7'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
